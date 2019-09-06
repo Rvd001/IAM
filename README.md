@@ -75,12 +75,49 @@
 
             ]
 
-
-
         }
 
     }
 
 }
+
+```
+# Enable your developers to create IAM roles to pass to EC2 and Lambda, but ensure they cannot exceed their own permission
+### (Allow create role but only with a specifiv permission boundary allow attach managed policies but only to roles with a specific boundary)
+
+
+``` json
+
+    {
+
+        "Effect": "Allow",
+        "Action": [
+
+            "iam:DetachRolePolicy",
+            "iam:CreateRole",
+            "iam:AttachRolePolicy"
+
+        ],
+
+        "Resource": "arn:aws:iam::123456789:role/unicorns-*",
+        "Condition":{
+            "StringEquals": {
+                "iam:PermissionsBoundary":
+                "arn:aws:iam::123456789:policy/region-restriction"
+
+            }
+
+        }
+
+    }
+
+```
+
+# Enable developers working on the Dorky Project and the Sneaky Project to manage their own resources without also managing the other project's
+
+``` json
+
+
+
 
 ```
