@@ -1,7 +1,7 @@
 # IAM
 
 # IAM POLICY STRUCTURE
-```json
+``` json
  {
 "Statement":[{
 "Effect":"effect",
@@ -17,7 +17,8 @@
 
 # Ensure developers cannot turn off cloudTrail, create IAM users, or set up AWS Directory Service
 ### This is a Service control POLICY
-```json
+
+``` json
 {
     "Version": "2012-10-17",
     "Statement":[
