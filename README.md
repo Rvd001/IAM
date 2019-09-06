@@ -48,4 +48,39 @@
 }
 
 ```
+# Ensure your Developers can create resources, but only in approved regions
 
+``` json
+
+{
+    "Effect": "Allow",
+    "Action": [
+        "secretsmanager:*",
+        "lambda:*",
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:DeleteObject"
+
+    ],
+
+    "Resources": "*",
+    "Condition": {
+
+        "StringEquals": {
+
+            "aws:RequestedRegion": [
+                "us-west-1",
+                "us-west-2"
+
+
+            ]
+
+
+
+        }
+
+    }
+
+}
+
+```
